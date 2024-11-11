@@ -22,6 +22,11 @@
         coreApp="true"
         android:sharedUserId="android.uid.system">
 
+    <!-- Permission for using posture guidance -->
+    <permission
+        android:name="com.google.android.settings.biometrics.face.POSTURE_GUIDANCE"
+        android:protectionLevel="privileged|signature"/>
+
     <application android:label="@string/settings_label"
             android:icon="@drawable/ic_launcher_settings"
             android:theme="@style/Theme.Settings"
@@ -49,8 +54,9 @@
 
         <activity android:theme="@style/SudThemeGlif.Light"
                   android:name="com.google.android.settings.biometrics.face.FaceEnrollConfirmation"
+                  android:permission="com.google.android.settings.biometrics.face.POSTURE_GUIDANCE"
                   android:exported="true"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="com.google.android.settings.action.CONFIRM_FACE_ENROLLMENT"/>
                 <category android:name="android.intent.category.DEFAULT"/>

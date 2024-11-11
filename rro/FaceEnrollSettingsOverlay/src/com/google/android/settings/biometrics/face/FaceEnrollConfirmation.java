@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
-
 import com.android.settings.R;
 
 import com.google.android.setupcompat.template.FooterBarMixin;
@@ -40,7 +39,7 @@ public class FaceEnrollConfirmation extends FragmentActivity {
             this.mUserId = bundle.getInt("android.intent.extra.USER_ID", this.mUserId);
         }
         setHeaderText(R.string.security_settings_face_enroll_finish_title);
-        getLayout().setDescriptionText(R.string.security_settings_face_enroll_finish_description);
+        getLayout().setDescriptionText(R.string.security_settings_face_enroll_finish_description_with_bp);
         FooterBarMixin footerBarMixin = (FooterBarMixin) getLayout().getMixin(FooterBarMixin.class);
         this.mFooterBarMixin = footerBarMixin;
         footerBarMixin.setPrimaryButton(new FooterButton.Builder(this).setText(R.string.security_settings_face_enroll_done).setListener(new View.OnClickListener() {
@@ -48,7 +47,7 @@ public class FaceEnrollConfirmation extends FragmentActivity {
             public final void onClick(View view) {
                 FaceEnrollConfirmation.this.onButtonPositive(view);
             }
-        }).setButtonType(5).setTheme(R.style.SudGlifButton_Primary).build());
+        }).setButtonType(5).setTheme(com.google.android.setupdesign.R.style.SudGlifButton_Primary).build());
     }
 
     @Override
