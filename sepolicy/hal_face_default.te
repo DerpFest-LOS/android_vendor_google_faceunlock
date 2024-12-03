@@ -1,6 +1,8 @@
 allow hal_face_default hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_face_default system_app:binder call;
 hal_client_domain(hal_face_default, hal_graphics_allocator)
 binder_call(hal_face_default, hal_graphics_allocator_default)
+binder_call(hal_face_default, system_app)
 
 # Implementation of face debug HAL
 hal_server_domain(hal_face_default, hal_face_debug)
@@ -40,6 +42,7 @@ allow hal_face_default persist_file:dir search;
 allow hal_face_default mnt_vendor_file:dir search;
 allow hal_face_default system_app:fd use;
 
+
 # Grant incidentd access to the face HAL debug images
 userdebug_or_eng(`
   allow hal_face_default incidentd:fd use;
@@ -60,6 +63,8 @@ hal_client_domain(hal_face_default, hal_thermal)
 allow hal_face_default fwk_camera_service:service_manager find;
 
 allow hal_face_default hal_face_debug_service:service_manager add;
+
+allow hal_face_default gxp_device:chr_file { open read write ioctl };
 
 # Allow hal_face_default to open files in sysfs
 allow hal_face_default sysfs:file { open read getattr write };
